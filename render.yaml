@@ -4,6 +4,7 @@ services:
     runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/bfhl
     envVars:
       - key: JAVA_VERSION
         value: 17

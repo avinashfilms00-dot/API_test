@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/bfhl")
+@RequestMapping("/api/bfhl")
 @CrossOrigin(origins = "*")
 public class BfhlController {
 
