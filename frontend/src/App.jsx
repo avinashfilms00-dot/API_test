@@ -3,19 +3,25 @@ import { useState } from 'react';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/bfhl';
 
 const options = [
+  { key: 'even_numbers', label: 'Even Numbers' },
+  { key: 'odd_numbers', label: 'Odd Numbers' },
   { key: 'alphabets', label: 'Alphabets' },
-  { key: 'numbers', label: 'Numbers' },
-  { key: 'highest_lowercase_alphabet', label: 'Highest lowercase alphabet' },
+  { key: 'special_characters', label: 'Special Characters' },
+  { key: 'sum', label: 'Sum of Numbers' },
+  { key: 'concat_string', label: 'Concat String' },
 ];
 
 function App() {
-  const [text, setText] = useState('{ "data": ["A", "C", "z"] }');
+  const [text, setText] = useState('{ "data": ["a", "1", "334", "4", "R", "$"] }');
   const [response, setResponse] = useState(null);
   const [error, setError] = useState('');
   const [selected, setSelected] = useState({
+    even_numbers: true,
+    odd_numbers: true,
     alphabets: true,
-    numbers: true,
-    highest_lowercase_alphabet: true,
+    special_characters: true,
+    sum: true,
+    concat_string: true,
   });
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -55,7 +61,7 @@ function App() {
   return (
     <div className="page-container">
       <header>
-        <h1>0827CI243D06</h1>
+        <h1>{response ? response.roll_number : 'BFHL API Portal'}</h1>
         <p>Enter a valid JSON payload and submit to call the BFHL backend.</p>
       </header>
       <main>
@@ -65,7 +71,7 @@ function App() {
             id="jsonInput"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder='{ "data": ["A", "C", "z"] }'
+            placeholder='{ "data": ["a", "1", "334", "4", "R", "$"] }'
           />
           <button type="submit">Submit</button>
         </form>
@@ -90,22 +96,46 @@ function App() {
 
             <div className="result">
               <h2>Rendered response</h2>
-              {selected.alphabets && (
+              
+              {selected.even_numbers && response.even_numbers && (
+                <div className="section">
+                  <strong>Even Numbers:</strong>
+                  <pre>{JSON.stringify(response.even_numbers || [], null, 2)}</pre>
+                </div>
+              )}
+
+              {selected.odd_numbers && response.odd_numbers && (
+                <div className="section">
+                  <strong>Odd Numbers:</strong>
+                  <pre>{JSON.stringify(response.odd_numbers || [], null, 2)}</pre>
+                </div>
+              )}
+
+              {selected.alphabets && response.alphabets && (
                 <div className="section">
                   <strong>Alphabets:</strong>
                   <pre>{JSON.stringify(response.alphabets || [], null, 2)}</pre>
                 </div>
               )}
-              {selected.numbers && (
+
+              {selected.special_characters && response.special_characters && (
                 <div className="section">
-                  <strong>Numbers:</strong>
-                  <pre>{JSON.stringify(response.numbers || [], null, 2)}</pre>
+                  <strong>Special Characters:</strong>
+                  <pre>{JSON.stringify(response.special_characters || response.sepcial_characters || [], null, 2)}</pre>
                 </div>
               )}
-              {selected.highest_lowercase_alphabet && (
+
+              {selected.sum && response.sum !== undefined && (
                 <div className="section">
-                  <strong>Highest lowercase alphabet:</strong>
-                  <pre>{JSON.stringify(response.highest_lowercase_alphabet || [], null, 2)}</pre>
+                  <strong>Sum:</strong>
+                  <pre>{response.sum}</pre>
+                </div>
+              )}
+
+              {selected.concat_string && response.concat_string !== undefined && (
+                <div className="section">
+                  <strong>Concat String:</strong>
+                  <pre>{response.concat_string}</pre>
                 </div>
               )}
             </div>

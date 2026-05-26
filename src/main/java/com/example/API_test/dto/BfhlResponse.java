@@ -1,7 +1,6 @@
 package com.example.API_test.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class BfhlResponse {
@@ -17,41 +16,42 @@ public class BfhlResponse {
     @JsonProperty("roll_number")
     private String rollNumber;
 
-    private List<String> numbers;
+    @JsonProperty("odd_numbers")
+    private List<String> oddNumbers;
+
+    @JsonProperty("even_numbers")
+    private List<String> evenNumbers;
+
     private List<String> alphabets;
 
-    @JsonProperty("highest_lowercase_alphabet")
-    private List<String> highestLowercaseAlphabet;
+    @JsonProperty("special_characters")
+    private List<String> specialCharacters;
 
-    @JsonProperty("is_prime_found")
-    private boolean primeFound;
+    @JsonProperty("sepcial_characters")
+    private List<String> sepcialCharacters;
 
-    @JsonProperty("file_valid")
-    private boolean fileValid;
+    private String sum;
 
-    @JsonProperty("file_mime_type")
-    private String fileMimeType;
-
-    @JsonProperty("file_size_kb")
-    private String fileSizeKb;
+    @JsonProperty("concat_string")
+    private String concatString;
 
     public BfhlResponse() {
     }
 
     public BfhlResponse(boolean success, String userId, String email, String rollNumber,
-                        List<String> numbers, List<String> alphabets, List<String> highestLowercaseAlphabet,
-                        boolean primeFound, boolean fileValid, String fileMimeType, String fileSizeKb) {
+                        List<String> oddNumbers, List<String> evenNumbers, List<String> alphabets,
+                        List<String> specialCharacters, String sum, String concatString) {
         this.success = success;
         this.userId = userId;
         this.email = email;
         this.rollNumber = rollNumber;
-        this.numbers = numbers;
+        this.oddNumbers = oddNumbers;
+        this.evenNumbers = evenNumbers;
         this.alphabets = alphabets;
-        this.highestLowercaseAlphabet = highestLowercaseAlphabet;
-        this.primeFound = primeFound;
-        this.fileValid = fileValid;
-        this.fileMimeType = fileMimeType;
-        this.fileSizeKb = fileSizeKb;
+        this.specialCharacters = specialCharacters;
+        this.sepcialCharacters = specialCharacters;
+        this.sum = sum;
+        this.concatString = concatString;
     }
 
     public boolean isSuccess() {
@@ -86,12 +86,20 @@ public class BfhlResponse {
         this.rollNumber = rollNumber;
     }
 
-    public List<String> getNumbers() {
-        return numbers;
+    public List<String> getOddNumbers() {
+        return oddNumbers;
     }
 
-    public void setNumbers(List<String> numbers) {
-        this.numbers = numbers;
+    public void setOddNumbers(List<String> oddNumbers) {
+        this.oddNumbers = oddNumbers;
+    }
+
+    public List<String> getEvenNumbers() {
+        return evenNumbers;
+    }
+
+    public void setEvenNumbers(List<String> evenNumbers) {
+        this.evenNumbers = evenNumbers;
     }
 
     public List<String> getAlphabets() {
@@ -102,43 +110,36 @@ public class BfhlResponse {
         this.alphabets = alphabets;
     }
 
-    public List<String> getHighestLowercaseAlphabet() {
-        return highestLowercaseAlphabet;
+    public List<String> getSpecialCharacters() {
+        return specialCharacters;
     }
 
-    public void setHighestLowercaseAlphabet(List<String> highestLowercaseAlphabet) {
-        this.highestLowercaseAlphabet = highestLowercaseAlphabet;
+    public void setSpecialCharacters(List<String> specialCharacters) {
+        this.specialCharacters = specialCharacters;
+        this.sepcialCharacters = specialCharacters;
     }
 
-    public boolean isPrimeFound() {
-        return primeFound;
+    public List<String> getSepcialCharacters() {
+        return sepcialCharacters;
     }
 
-    public void setPrimeFound(boolean primeFound) {
-        this.primeFound = primeFound;
+    public void setSepcialCharacters(List<String> sepcialCharacters) {
+        this.sepcialCharacters = sepcialCharacters;
     }
 
-    public boolean isFileValid() {
-        return fileValid;
+    public String getSum() {
+        return sum;
     }
 
-    public void setFileValid(boolean fileValid) {
-        this.fileValid = fileValid;
+    public void setSum(String sum) {
+        this.sum = sum;
     }
 
-    public String getFileMimeType() {
-        return fileMimeType;
+    public String getConcatString() {
+        return concatString;
     }
 
-    public void setFileMimeType(String fileMimeType) {
-        this.fileMimeType = fileMimeType;
-    }
-
-    public String getFileSizeKb() {
-        return fileSizeKb;
-    }
-
-    public void setFileSizeKb(String fileSizeKb) {
-        this.fileSizeKb = fileSizeKb;
+    public void setConcatString(String concatString) {
+        this.concatString = concatString;
     }
 }
