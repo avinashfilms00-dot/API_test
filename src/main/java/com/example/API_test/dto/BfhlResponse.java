@@ -2,7 +2,9 @@ package com.example.API_test.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"is_success","user_id","email","roll_number","odd_numbers","even_numbers","alphabets","special_characters","sum","concat_string"})
 public class BfhlResponse {
 
     @JsonProperty("is_success")
@@ -27,8 +29,7 @@ public class BfhlResponse {
     @JsonProperty("special_characters")
     private List<String> specialCharacters;
 
-    @JsonProperty("sepcial_characters")
-    private List<String> sepcialCharacters;
+
 
     private String sum;
 
@@ -49,7 +50,7 @@ public class BfhlResponse {
         this.evenNumbers = evenNumbers;
         this.alphabets = alphabets;
         this.specialCharacters = specialCharacters;
-        this.sepcialCharacters = specialCharacters;
+
         this.sum = sum;
         this.concatString = concatString;
     }
@@ -119,13 +120,7 @@ public class BfhlResponse {
         this.sepcialCharacters = specialCharacters;
     }
 
-    public List<String> getSepcialCharacters() {
-        return sepcialCharacters;
-    }
 
-    public void setSepcialCharacters(List<String> sepcialCharacters) {
-        this.sepcialCharacters = sepcialCharacters;
-    }
 
     public String getSum() {
         return sum;
